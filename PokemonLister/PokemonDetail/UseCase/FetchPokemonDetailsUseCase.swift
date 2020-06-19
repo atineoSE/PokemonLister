@@ -25,7 +25,6 @@ class FetchPokemonDetailsUseCase {
         let url = PokemonAPI.pokemonURL(for: name)
         networkController.get(url: url) { [weak self] (result: Result<Pokemon, Error>) in
             if let pokemon = try? result.get() {
-                print(pokemon)
                 DispatchQueue.main.async {
                     self?.delegate.didRetrieve(pokemon: pokemon.viewModel)
                 }
