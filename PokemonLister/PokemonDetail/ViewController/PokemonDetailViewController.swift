@@ -60,6 +60,10 @@ class PokemonDetailViewController: UIViewController, Refreshable {
 // MARK: UITableViewDelegate
 extension PokemonDetailViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
+    }
+    
 }
 
 

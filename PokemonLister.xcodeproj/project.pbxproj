@@ -41,7 +41,6 @@
 		0B5D037A249CF4AC00C4ACE9 /* PokemonImagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B5D0378249CF4AC00C4ACE9 /* PokemonImagesTableViewCell.xib */; };
 		0B5D037D249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D037B249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.swift */; };
 		0B5D037E249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B5D037C249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.xib */; };
-		0B5D0380249CFB4A00C4ACE9 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D037F249CFB4A00C4ACE9 /* UILabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +92,6 @@
 		0B5D0378249CF4AC00C4ACE9 /* PokemonImagesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonImagesTableViewCell.xib; sourceTree = "<group>"; };
 		0B5D037B249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonPropertiesTableViewCell.swift; sourceTree = "<group>"; };
 		0B5D037C249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonPropertiesTableViewCell.xib; sourceTree = "<group>"; };
-		0B5D037F249CFB4A00C4ACE9 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +231,6 @@
 			children = (
 				0B5D0357249CB99400C4ACE9 /* UITableView.swift */,
 				0B5D0360249CC10700C4ACE9 /* UIImage.swift */,
-				0B5D037F249CFB4A00C4ACE9 /* UILabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -415,7 +412,6 @@
 				0B5D0371249CEA6700C4ACE9 /* PokemonListCoordinating.swift in Sources */,
 				0B5D033B249CADBE00C4ACE9 /* NetworkController.swift in Sources */,
 				0B5D0342249CAEA100C4ACE9 /* JSONRequest.swift in Sources */,
-				0B5D0380249CFB4A00C4ACE9 /* UILabel.swift in Sources */,
 				0B5D0369249CCEB900C4ACE9 /* TableViewRows.swift in Sources */,
 				0B5D0355249CB5FB00C4ACE9 /* PokemonSummaryViewModel.swift in Sources */,
 				0B5D034F249CB1D600C4ACE9 /* PokemonTableViewCell.swift in Sources */,

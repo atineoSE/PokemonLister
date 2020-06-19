@@ -79,9 +79,9 @@ extension PokemonDetailDataSource {
             rows = [.name(pokemon.name),
                     .images(pokemon.images),
                     .properties(("Characteristics", pokemon.characteristics)),
+                    .properties(("Types", pokemon.types)),
                     .properties(("Abilities", pokemon.abilities)),
-                    .properties(("Moves", pokemon.moves)),
-                    .properties(("Types", pokemon.types))
+                    .properties(("Moves", pokemon.moves))
             ]
         }
         
