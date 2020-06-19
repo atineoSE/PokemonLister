@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B5D0311249C9E5000C4ACE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D0310249C9E5000C4ACE9 /* AppDelegate.swift */; };
-		0B5D0315249C9E5000C4ACE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D0314249C9E5000C4ACE9 /* ViewController.swift */; };
 		0B5D0318249C9E5000C4ACE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B5D0316249C9E5000C4ACE9 /* Main.storyboard */; };
 		0B5D031A249C9E5400C4ACE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B5D0319249C9E5400C4ACE9 /* Assets.xcassets */; };
 		0B5D031D249C9E5400C4ACE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B5D031B249C9E5400C4ACE9 /* LaunchScreen.storyboard */; };
@@ -27,6 +26,7 @@
 		0B5D0352249CB5B400C4ACE9 /* PokemonListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D0351249CB5B400C4ACE9 /* PokemonListDataSource.swift */; };
 		0B5D0355249CB5FB00C4ACE9 /* PokemonSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D0354249CB5FB00C4ACE9 /* PokemonSummaryViewModel.swift */; };
 		0B5D0358249CB99400C4ACE9 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D0357249CB99400C4ACE9 /* UITableView.swift */; };
+		0B5D035A249CBAF800C4ACE9 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 0B5D0359249CBAF700C4ACE9 /* Images */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 /* Begin PBXFileReference section */
 		0B5D030D249C9E5000C4ACE9 /* PokemonLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5D0310249C9E5000C4ACE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0B5D0314249C9E5000C4ACE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0B5D0317249C9E5000C4ACE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B5D0319249C9E5400C4ACE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B5D031C249C9E5400C4ACE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +63,7 @@
 		0B5D0351249CB5B400C4ACE9 /* PokemonListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListDataSource.swift; sourceTree = "<group>"; };
 		0B5D0354249CB5FB00C4ACE9 /* PokemonSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSummaryViewModel.swift; sourceTree = "<group>"; };
 		0B5D0357249CB99400C4ACE9 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UITableView.swift; path = ../../../../../../../../../Users/adriantineo/Documents/UITableView.swift; sourceTree = "<group>"; };
+		0B5D0359249CBAF700C4ACE9 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,7 @@
 				0B5D0337249CAD0F00C4ACE9 /* Network */,
 				0B5D0332249CAC7800C4ACE9 /* Model */,
 				0B5D0310249C9E5000C4ACE9 /* AppDelegate.swift */,
-				0B5D0314249C9E5000C4ACE9 /* ViewController.swift */,
+				0B5D0359249CBAF700C4ACE9 /* Images */,
 				0B5D0316249C9E5000C4ACE9 /* Main.storyboard */,
 				0B5D0319249C9E5400C4ACE9 /* Assets.xcassets */,
 				0B5D031B249C9E5400C4ACE9 /* LaunchScreen.storyboard */,
@@ -283,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B5D035A249CBAF800C4ACE9 /* Images in Resources */,
 				0B5D031D249C9E5400C4ACE9 /* LaunchScreen.storyboard in Resources */,
 				0B5D0350249CB1D700C4ACE9 /* PokemonTableViewCell.xib in Resources */,
 				0B5D031A249C9E5400C4ACE9 /* Assets.xcassets in Resources */,
@@ -308,7 +309,6 @@
 				0B5D0336249CAC9600C4ACE9 /* Pokemon.swift in Sources */,
 				0B5D0358249CB99400C4ACE9 /* UITableView.swift in Sources */,
 				0B5D033D249CAE5700C4ACE9 /* NetworkError.swift in Sources */,
-				0B5D0315249C9E5000C4ACE9 /* ViewController.swift in Sources */,
 				0B5D0339249CAD3500C4ACE9 /* PokemonAPI.swift in Sources */,
 				0B5D0334249CAC8B00C4ACE9 /* PokemonList.swift in Sources */,
 				0B5D0311249C9E5000C4ACE9 /* AppDelegate.swift in Sources */,
