@@ -25,7 +25,7 @@ class FetchPokemonListUseCase {
         networkController.get(url: PokemonAPI.pokemonURL) { [weak self] (result: Result<PokemonList,Error>) in
             if let pokemonItemList = try? result.get().results {
                 DispatchQueue.main.async {
-                    let pokemonList = pokemonItemList.map { $0.summaryViewModel }
+                    let pokemonList = pokemonItemList.compactMap { $0.pokemonSummaryViewModel }
                     self?.delegate.didRetrieve(pokemonList: pokemonList)
                 }
             }

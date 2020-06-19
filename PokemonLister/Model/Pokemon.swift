@@ -27,7 +27,7 @@ extension Item {
         return String(id)
     }
     
-    var viewModel: PokemonSummaryViewModel? {
+    var pokemonSummaryViewModel: PokemonSummaryViewModel? {
         guard url.absoluteString.contains("pokemon") else { return nil }
         
         let image = UIImage.mainImage(pokemonId: id)
@@ -55,6 +55,11 @@ struct Pokemon: Decodable {
     let moves: [PokemonMove]
 }
 
+extension Pokemon {
+    var viewModel: PokemonViewModel {
+        return PokemonViewModel(name: name)
+    }
+}
 
 struct PokemonViewModel {
     let name: String

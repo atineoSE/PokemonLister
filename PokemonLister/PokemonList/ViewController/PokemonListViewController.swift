@@ -9,11 +9,11 @@
 import UIKit
 
 class PokemonListViewController: UIViewController, Refreshable {
-
     @IBOutlet weak var tableView: UITableView!
     
     var fetchPokemonListUseCase: FetchPokemonListUseCase?
     var dataSource: PokemonListDataSource?
+    weak var coordinator: PokemonListCoordinating?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +45,15 @@ class PokemonListViewController: UIViewController, Refreshable {
         tableView.dataSource = dataSource
         tableView.reloadData()
     }
+
 }
 
 // MARK: UITableViewDelegate
 extension PokemonListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedPokemonName = dataSource?.pokemonViewModel(at: indexPath).name else { return }
+        coordinator?.pokemonListViewController(self, didSelectPokemonWithName: selectedPokemonName)
+    }
 }
 
 

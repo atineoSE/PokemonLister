@@ -11,4 +11,7 @@ import Foundation
 struct PokemonAPI {
     static var baseURL = URL(string:"https://pokeapi.co/api/v2/")!
     static var pokemonURL = PokemonAPI.baseURL.appendingPathComponent("pokemon")
+    static func pokemonURL(for name: String) -> URL {
+        return pokemonURL.appendingPathComponent(name)
+    }
 }

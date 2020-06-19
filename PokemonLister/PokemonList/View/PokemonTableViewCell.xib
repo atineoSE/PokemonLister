@@ -13,7 +13,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="122" id="KGk-i7-Jjw" customClass="PokemonTableViewCell" customModule="PokemonLister" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="400" height="122"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="400" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -24,10 +24,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XTY-KG-k5R">
-                        <rect key="frame" x="8" y="8" width="96" height="96"/>
+                        <rect key="frame" x="8" y="8" width="96" height="106"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="96" id="asj-zs-u4Z"/>
-                            <constraint firstAttribute="height" constant="96" id="jBA-Bb-YzC"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="96" id="jBA-Bb-YzC"/>
                         </constraints>
                     </imageView>
                 </subviews>

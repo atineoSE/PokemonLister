@@ -49,7 +49,6 @@
                     <navigationItem key="navigationItem" title="Pokemon List" id="Zq3-9F-f80"/>
                     <connections>
                         <outlet property="tableView" destination="ozR-aY-auL" id="k5F-UW-NJJ"/>
-                        <segue destination="MDP-x3-9WT" kind="show" identifier="PresentPokemonDetail" id="7N0-Yf-f6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stv-m2-lRp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -59,7 +58,7 @@
         <!--Pokemon Detail View Controller-->
         <scene sceneID="NTp-B0-1y3">
             <objects>
-                <viewController id="MDP-x3-9WT" customClass="PokemonDetailViewController" customModule="PokemonLister" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PokemonDetail" id="MDP-x3-9WT" customClass="PokemonDetailViewController" customModule="PokemonLister" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NpO-yt-oyW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,6 +78,7 @@
                         <viewLayoutGuide key="safeArea" id="9YO-3r-HSF"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="fND-UI-OF6"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="MOo-ha-GLT" id="SjC-mP-Md5"/>
                     </connections>

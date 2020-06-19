@@ -9,9 +9,13 @@
 import UIKit
 
 class PokemonDetailViewController: UIViewController, Refreshable {
+    
+    static let identifier = "PokemonDetail"
+    
     @IBOutlet weak var tableView: UITableView!
     
     var dataSource: PokemonDetailDataSource?
+    var fetchPokemonDetailsUseCase: FetchPokemonDetailsUseCase?
     var pokemonName: String?
     
     override func viewDidLoad() {
@@ -31,8 +35,9 @@ class PokemonDetailViewController: UIViewController, Refreshable {
     
     @objc
     func refresh() {
+        guard let pokemonName = pokemonName else { return }
         beginRefreshing()
-        
+        fetchPokemonDetailsUseCase?.fetchPokemon(with: pokemonName)
     }
     
     private func updateUI(with pokemon: PokemonViewModel) {
@@ -49,4 +54,10 @@ extension PokemonDetailViewController: UITableViewDelegate {
 }
 
 
-
+// MARK: FetchPokemonListUseCaseDelegate
+extension PokemonDetailViewController: FetchPokemonDetailsUseCaseDelegate {
+    func didRetrieve(pokemon: PokemonViewModel) {
+        endRefreshing()
+        updateUI(with: pokemon)
+    }
+}
