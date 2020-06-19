@@ -18,6 +18,8 @@ class PokemonListViewController: UIViewController, Refreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        registerCellType()
+        
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.separatorStyle = .none
