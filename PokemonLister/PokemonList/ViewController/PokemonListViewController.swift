@@ -18,6 +18,10 @@ class PokemonListViewController: UIViewController, Refreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.dataSource = dataSource
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        
         setupRefreshControl()
         refresh()
     }
@@ -41,9 +45,13 @@ class PokemonListViewController: UIViewController, Refreshable {
     }
 }
 
+extension PokemonListViewController: UITableViewDelegate {
+    
+}
 
 extension PokemonListViewController: FetchPokemonListUseCaseDelegate {
     func didRetrieve(pokemonList: [PokemonSummaryViewModel]) {
+        tableView.separatorStyle = .singleLine
         endRefreshing()
         updateUI(with: pokemonList)
     }
