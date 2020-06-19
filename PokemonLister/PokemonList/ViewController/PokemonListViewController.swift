@@ -13,6 +13,7 @@ class PokemonListViewController: UIViewController, Refreshable {
     @IBOutlet weak var tableView: UITableView!
     
     var fetchPokemonListUseCase: FetchPokemonListUseCase?
+    var dataSource: PokemonListDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,5 +34,20 @@ class PokemonListViewController: UIViewController, Refreshable {
         beginRefreshing()
         fetchPokemonListUseCase?.fetchPokemonList()
     }
+    
+    private func updateUI(with pokemonList: [PokemonSummaryViewModel]) {
+        dataSource = PokemonListDataSource(pokemonList:pokemonList)
+        tableView.dataSource = dataSource
+        tableView.reloadData()
+    }
+}
+
+
+extension PokemonListViewController: FetchPokemonListUseCaseDelegate {
+    func didRetrieve(pokemonList: [PokemonSummaryViewModel]) {
+        endRefreshing()
+        updateUI(with: pokemonList)
+    }
+    
     
 }
