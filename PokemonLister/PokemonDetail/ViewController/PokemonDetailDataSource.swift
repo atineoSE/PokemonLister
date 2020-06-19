@@ -42,7 +42,8 @@ class PokemonDetailDataSource: NSObject {
 extension PokemonDetailDataSource: RowTypeSourcing {
     static var rowTypes: [RowType] {
         return [PokemonDetailRowType.name(""),
-                PokemonDetailRowType.images([])]
+                PokemonDetailRowType.images([]),
+                PokemonDetailRowType.properties(("",[]))]
     }
 }
 
@@ -74,7 +75,14 @@ extension PokemonDetailDataSource {
         
         init(pokemon: PokemonViewModel) {
             self.pokemon = pokemon
-            rows = [.name(pokemon.name)]
+
+            rows = [.name(pokemon.name),
+                    .images(pokemon.images),
+                    .properties(("Characteristics", pokemon.characteristics)),
+                    .properties(("Abilities", pokemon.abilities)),
+                    .properties(("Moves", pokemon.moves)),
+                    .properties(("Types", pokemon.types))
+            ]
         }
         
         func row(at index: Int) -> PokemonDetailRowType {

@@ -57,10 +57,24 @@ struct Pokemon: Decodable {
 
 extension Pokemon {
     var viewModel: PokemonViewModel {
-        return PokemonViewModel(name: name)
+        let characteristics = ["Base experience: \(baseExperience)",
+                                "Weight: \(weight)",
+                                "Height: \(height)"]
+        
+        return PokemonViewModel(name: name,
+                                images: [],
+                                characteristics: characteristics,
+                                abilities: abilities.map { $0.ability.name },
+                                moves: moves.map { $0.move.name },
+                                types: types.map { $0.type.name })
     }
 }
 
 struct PokemonViewModel {
     let name: String
+    let images: [UIImage]
+    let characteristics: [String]
+    let abilities: [String]
+    let moves: [String]
+    let types: [String]
 }

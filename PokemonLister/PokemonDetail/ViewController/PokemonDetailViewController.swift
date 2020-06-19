@@ -21,7 +21,7 @@ class PokemonDetailViewController: UIViewController, Refreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //registerCellType()
+        registerCellTypes()
         
         tableView.dataSource = dataSource
         tableView.delegate = self
@@ -31,6 +31,15 @@ class PokemonDetailViewController: UIViewController, Refreshable {
         
         setupRefreshControl()
         refresh()
+    }
+    
+    private func registerCellTypes() {
+        PokemonDetailDataSource.rowTypes.forEach { row in
+            let identifier = row.identifier
+            let nib = UINib.init(nibName: identifier, bundle: nil)
+            tableView.register(nib, forCellReuseIdentifier: identifier)
+        }
+        tableView.separatorStyle = .none
     }
     
     @objc
