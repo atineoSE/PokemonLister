@@ -12,6 +12,7 @@ class PokemonDetailViewController: UIViewController, Refreshable {
     @IBOutlet weak var tableView: UITableView!
     
     var dataSource: PokemonDetailDataSource?
+    var pokemonName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,8 @@ class PokemonDetailViewController: UIViewController, Refreshable {
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.separatorStyle = .none
+        
+        navigationItem.title = pokemonName
         
         setupRefreshControl()
         refresh()

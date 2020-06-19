@@ -78,7 +78,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9YO-3r-HSF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fND-UI-OF6"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="fND-UI-OF6"/>
                     <connections>
                         <outlet property="tableView" destination="MOo-ha-GLT" id="SjC-mP-Md5"/>
                     </connections>
