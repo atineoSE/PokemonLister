@@ -7,8 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct Pokemon: Decodable {
-    
+    let name: String
+}
+
+
+struct PokemonViewModel {
+    let name: String
 }

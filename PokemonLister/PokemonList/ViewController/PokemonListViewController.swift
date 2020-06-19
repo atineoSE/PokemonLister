@@ -47,16 +47,17 @@ class PokemonListViewController: UIViewController, Refreshable {
     }
 }
 
+// MARK: UITableViewDelegate
 extension PokemonListViewController: UITableViewDelegate {
     
 }
 
+
+// MARK: FetchPokemonListUseCaseDelegate
 extension PokemonListViewController: FetchPokemonListUseCaseDelegate {
     func didRetrieve(pokemonList: [PokemonSummaryViewModel]) {
         tableView.separatorStyle = .singleLine
         endRefreshing()
         updateUI(with: pokemonList)
     }
-    
-    
 }

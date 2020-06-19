@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 // MARK: DataSource
 class PokemonListDataSource: NSObject {
     private var organizer: DataOrganizer

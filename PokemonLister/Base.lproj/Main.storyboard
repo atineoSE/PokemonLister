@@ -49,11 +49,43 @@
                     <navigationItem key="navigationItem" title="Pokemon List" id="Zq3-9F-f80"/>
                     <connections>
                         <outlet property="tableView" destination="ozR-aY-auL" id="k5F-UW-NJJ"/>
+                        <segue destination="MDP-x3-9WT" kind="show" identifier="PresentPokemonDetail" id="7N0-Yf-f6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stv-m2-lRp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="591" y="102"/>
+        </scene>
+        <!--Pokemon Detail View Controller-->
+        <scene sceneID="NTp-B0-1y3">
+            <objects>
+                <viewController id="MDP-x3-9WT" customClass="PokemonDetailViewController" customModule="PokemonLister" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NpO-yt-oyW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MOo-ha-GLT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9YO-3r-HSF" firstAttribute="bottom" secondItem="MOo-ha-GLT" secondAttribute="bottom" id="Cpb-wl-5Vr"/>
+                            <constraint firstItem="9YO-3r-HSF" firstAttribute="trailing" secondItem="MOo-ha-GLT" secondAttribute="trailing" id="NqJ-c2-7Yd"/>
+                            <constraint firstItem="MOo-ha-GLT" firstAttribute="leading" secondItem="9YO-3r-HSF" secondAttribute="leading" id="WX1-2W-qC5"/>
+                            <constraint firstItem="MOo-ha-GLT" firstAttribute="top" secondItem="9YO-3r-HSF" secondAttribute="top" id="cEi-rO-zo5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9YO-3r-HSF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fND-UI-OF6"/>
+                    <connections>
+                        <outlet property="tableView" destination="MOo-ha-GLT" id="SjC-mP-Md5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Egu-ji-jgW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="102"/>
         </scene>
     </scenes>
 </document>
