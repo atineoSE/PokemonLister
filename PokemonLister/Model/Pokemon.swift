@@ -16,6 +16,7 @@ struct Item: Decodable {
 
 struct PokemonList: Decodable {
     let results: [Item]
+    let next: URL?
 }
 
 extension Item {

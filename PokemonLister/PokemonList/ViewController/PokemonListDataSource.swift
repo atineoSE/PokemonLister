@@ -13,8 +13,12 @@ import UIKit
 class PokemonListDataSource: NSObject {
     private var organizer: DataOrganizer
     
-    init(pokemonList: [PokemonSummaryViewModel]) {
-        organizer = DataOrganizer(pokemonList: pokemonList)
+    override init() {
+        organizer = DataOrganizer()
+    }
+    
+    func add(_ pokemonList: [PokemonSummaryViewModel]) {
+        organizer.append(page: pokemonList)
     }
     
     func pokemonViewModel(at indexPath: IndexPath) -> PokemonSummaryViewModel {
@@ -40,14 +44,17 @@ extension PokemonListDataSource: UITableViewDataSource {
 // MARK: DataOrganizer
 extension PokemonListDataSource {
     struct DataOrganizer {
-        var pokemonList: [PokemonSummaryViewModel]
+        var pokemonList: [PokemonSummaryViewModel] = []
         
         var rowsCount: Int {
             return pokemonList.count
         }
-
         subscript(index: Int) -> PokemonSummaryViewModel {
             return pokemonList[index]
+        }
+        
+        mutating func append(page: [PokemonSummaryViewModel]) {
+            pokemonList.append(contentsOf: page)
         }
     }
 }

@@ -12,7 +12,7 @@ class PokemonListViewController: UIViewController, Refreshable {
     @IBOutlet weak var tableView: UITableView!
     
     var fetchPokemonListUseCase: FetchPokemonListUseCase?
-    var dataSource: PokemonListDataSource?
+    let dataSource: PokemonListDataSource  = PokemonListDataSource()
     weak var coordinator: PokemonListCoordinating?
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class PokemonListViewController: UIViewController, Refreshable {
     }
     
     private func updateUI(with pokemonList: [PokemonSummaryViewModel]) {
-        dataSource = PokemonListDataSource(pokemonList:pokemonList)
+        dataSource.add(pokemonList)
         tableView.dataSource = dataSource
         tableView.reloadData()
     }
@@ -51,9 +51,13 @@ class PokemonListViewController: UIViewController, Refreshable {
 // MARK: UITableViewDelegate
 extension PokemonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedPokemonName = dataSource?.pokemonViewModel(at: indexPath).name else { return }
+        let selectedPokemonName = dataSource.pokemonViewModel(at: indexPath).name
         coordinator?.pokemonListViewController(self, didSelectPokemonWithName: selectedPokemonName)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        fetchPokemonListUseCase?.fetchPokemonList()
     }
 }
 
