@@ -10,11 +10,17 @@ import UIKit
 
 class PokemonListViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
+    
+    private func registerCellType() {
+        let identifier = String(describing: PokemonTableViewCell.self)
+        let nib = UINib.init(nibName: identifier, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: identifier)
+    }
 
 }
