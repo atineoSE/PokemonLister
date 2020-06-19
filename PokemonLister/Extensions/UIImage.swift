@@ -27,4 +27,17 @@ extension UIImage {
         
         return image
     }
+    
+    static func allImages(pokemonId: Int) -> [UIImage] {
+        // Note: this is O(N) with the number of images.
+        // If having too many images, another approach is recommended (e.g. subfolders by id)
+        guard let urls = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "Images") else { return [UIImage.unknownPokemonImage] }
+        
+        let pokemonUrls = urls.filter { url in
+            guard let filename = url.pathComponents.last else { return false }
+            return filename.starts(with: "\(pokemonId).") || filename.starts(with: "\(pokemonId)-")
+        }
+
+        return pokemonUrls.compactMap({ try? Data(contentsOf: $0)}).compactMap({ UIImage(data: $0) })
+    }
 }

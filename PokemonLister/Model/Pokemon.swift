@@ -45,7 +45,7 @@ struct Pokemon: Decodable {
     struct PokemonMove: Decodable {
         let move: Item
     }
-    
+    let id: Int
     let name: String
     let height: Int
     let weight: Int
@@ -60,9 +60,8 @@ extension Pokemon {
         let characteristics = ["Base experience: \(baseExperience)",
                                 "Weight: \(weight)",
                                 "Height: \(height)"]
-        
         return PokemonViewModel(name: name,
-                                images: [],
+                                images: UIImage.allImages(pokemonId: id),
                                 characteristics: characteristics,
                                 abilities: abilities.map { $0.ability.name },
                                 moves: moves.map { $0.move.name },

@@ -18,15 +18,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgL-y3-B9i">
-                        <rect key="frame" x="124.5" y="5.5" width="71.5" height="33.5"/>
+                        <rect key="frame" x="124.5" y="8" width="71.5" height="28"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="KgL-y3-B9i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="HBC-S4-5r8"/>
                     <constraint firstItem="KgL-y3-B9i" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="mYd-IZ-9nG"/>
-                    <constraint firstItem="KgL-y3-B9i" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="n2M-Et-KV9"/>
+                    <constraint firstAttribute="bottom" secondItem="KgL-y3-B9i" secondAttribute="bottom" constant="8" id="xYS-9v-BbK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

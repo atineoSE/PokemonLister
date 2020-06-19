@@ -53,6 +53,7 @@ extension PokemonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedPokemonName = dataSource?.pokemonViewModel(at: indexPath).name else { return }
         coordinator?.pokemonListViewController(self, didSelectPokemonWithName: selectedPokemonName)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
