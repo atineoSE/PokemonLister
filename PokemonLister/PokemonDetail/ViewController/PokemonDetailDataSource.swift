@@ -11,17 +11,21 @@ import UIKit
 
 // MARK: Types
 enum PokemonDetailRowType: RowType {
-    case summary(PokemonSummaryViewModel)
+    case name(String)
+    case images([UIImage])
+    case properties((String, [String]))
     
     var cellType: UITableViewCell.Type {
         switch self {
-        case .summary: return PokemonTableViewCell.self
+        case .name(_): return PokemonNameTableViewCell.self
+        case .images(_): return PokemonImagesTableViewCell.self
+        case .properties(_): return PokemonPropertiesTableViewCell.self
         }
     }
 }
 
 // MARK: Protocols
-protocol ProfileRowConfigurable {
+protocol PokemonDetailRowConfigurable {
     func configure(with row: PokemonDetailRowType)
 }
 
@@ -37,7 +41,8 @@ class PokemonDetailDataSource: NSObject {
 // MARK: RowTypeSourcing
 extension PokemonDetailDataSource: RowTypeSourcing {
     static var rowTypes: [RowType] {
-        return [PokemonDetailRowType.summary(PokemonSummaryViewModel.dummyViewModel)]
+        return [PokemonDetailRowType.name(""),
+                PokemonDetailRowType.images([])]
     }
 }
 
@@ -50,7 +55,7 @@ extension PokemonDetailDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = organizer.row(at: indexPath.row)
         let cell = tableView.dequeueReusableCell(with: row.cellType, for: indexPath)
-        if let configurableCell = cell as? ProfileRowConfigurable {
+        if let configurableCell = cell as? PokemonDetailRowConfigurable {
             configurableCell.configure(with: row)
         }
         return cell
@@ -69,7 +74,7 @@ extension PokemonDetailDataSource {
         
         init(pokemon: PokemonViewModel) {
             self.pokemon = pokemon
-            rows = []
+            rows = [.name(pokemon.name)]
         }
         
         func row(at index: Int) -> PokemonDetailRowType {
