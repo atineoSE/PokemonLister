@@ -13,13 +13,13 @@ protocol FetchPokemonListUseCaseDelegate: AnyObject {
 }
 
 class FetchPokemonListUseCase {
-    private let networkController: NetworkController
+    private let persistenceController: PersistenceController
     private weak var delegate: FetchPokemonListUseCaseDelegate?
     private var nextUrl: URL?
     private var canContinueFetching: Bool = true
     
-    init(networkController: NetworkController, delegate: FetchPokemonListUseCaseDelegate) {
-        self.networkController = networkController
+    init(persistenceController: PersistenceController, delegate: FetchPokemonListUseCaseDelegate) {
+        self.persistenceController = persistenceController
         self.delegate = delegate
     }
     
@@ -27,20 +27,20 @@ class FetchPokemonListUseCase {
         guard canContinueFetching else { return }
         
         let fetchURL = nextUrl ?? PokemonAPI.pokemonURL
-        networkController.get(url: fetchURL) { [weak self] (result: Result<PokemonList,Error>) in
-            if let pokemonList = try? result.get() {
-                let pokemonItemList = pokemonList.results
-                if let next = pokemonList.next {
-                    self?.nextUrl = next
-                } else {
-                    self?.nextUrl = nil
-                    self?.canContinueFetching = false
-                }
-                
-                DispatchQueue.main.async {
-                    let pokemonList = pokemonItemList.compactMap { $0.pokemonSummaryViewModel }
-                    self?.delegate?.didRetrieve(pokemonList: pokemonList)
-                }
+        
+        persistenceController.fetch(url: fetchURL) { [weak self] (pokemonList: PokemonList?) in
+            guard let pokemonList = pokemonList else { return }
+
+            let pokemonItemList = pokemonList.results
+            if let next = pokemonList.next {
+                self?.nextUrl = next
+            } else {
+                self?.nextUrl = nil
+                self?.canContinueFetching = false
+            }
+            let pokemonSummaryViewModelList = pokemonItemList.compactMap { $0.pokemonSummaryViewModel }
+            DispatchQueue.main.async {
+                self?.delegate?.didRetrieve(pokemonList: pokemonSummaryViewModelList)
             }
         }
     }

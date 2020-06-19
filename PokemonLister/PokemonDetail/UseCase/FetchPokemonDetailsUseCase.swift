@@ -8,26 +8,26 @@
 
 import Foundation
 
-protocol FetchPokemonDetailsUseCaseDelegate {
+protocol FetchPokemonDetailsUseCaseDelegate: AnyObject {
     func didRetrieve(pokemon: PokemonViewModel)
 }
 
 class FetchPokemonDetailsUseCase {
-    private let networkController: NetworkController
-    private let delegate: FetchPokemonDetailsUseCaseDelegate
+    private let persistenceController: PersistenceController
+    private weak var delegate: FetchPokemonDetailsUseCaseDelegate?
     
-    init(networkController: NetworkController, delegate: FetchPokemonDetailsUseCaseDelegate) {
-        self.networkController = networkController
+    init(persistenceController: PersistenceController, delegate: FetchPokemonDetailsUseCaseDelegate) {
+        self.persistenceController = persistenceController
         self.delegate = delegate
     }
     
     func fetchPokemon(with name: String) {
         let url = PokemonAPI.pokemonURL(for: name)
-        networkController.get(url: url) { [weak self] (result: Result<Pokemon, Error>) in
-            if let pokemon = try? result.get() {
-                DispatchQueue.main.async {
-                    self?.delegate.didRetrieve(pokemon: pokemon.viewModel)
-                }
+        
+        persistenceController.fetch(url: url) { [weak self] (pokemon: Pokemon?) in
+            guard let pokemon = pokemon else { return }
+            DispatchQueue.main.async {
+                self?.delegate?.didRetrieve(pokemon: pokemon.viewModel)
             }
         }
     }

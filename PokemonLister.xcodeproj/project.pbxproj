@@ -41,6 +41,7 @@
 		0B5D037A249CF4AC00C4ACE9 /* PokemonImagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B5D0378249CF4AC00C4ACE9 /* PokemonImagesTableViewCell.xib */; };
 		0B5D037D249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D037B249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.swift */; };
 		0B5D037E249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B5D037C249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.xib */; };
+		0B5D0383249D164D00C4ACE9 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D0382249D164D00C4ACE9 /* PersistenceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		0B5D0378249CF4AC00C4ACE9 /* PokemonImagesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonImagesTableViewCell.xib; sourceTree = "<group>"; };
 		0B5D037B249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonPropertiesTableViewCell.swift; sourceTree = "<group>"; };
 		0B5D037C249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonPropertiesTableViewCell.xib; sourceTree = "<group>"; };
+		0B5D0382249D164D00C4ACE9 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				0B5D036D249CEA1000C4ACE9 /* Coordinator.swift */,
+				0B5D0382249D164D00C4ACE9 /* PersistenceController.swift */,
 				0B5D0356249CB98700C4ACE9 /* Extensions */,
 				0B5D0346249CB01600C4ACE9 /* PokemonList */,
 				0B5D0362249CC72000C4ACE9 /* PokemonDetail */,
@@ -421,6 +424,7 @@
 				0B5D0352249CB5B400C4ACE9 /* PokemonListDataSource.swift in Sources */,
 				0B5D0349249CB04200C4ACE9 /* PokemonListViewController.swift in Sources */,
 				0B5D0365249CC73A00C4ACE9 /* PokemonDetailViewController.swift in Sources */,
+				0B5D0383249D164D00C4ACE9 /* PersistenceController.swift in Sources */,
 				0B5D036E249CEA1000C4ACE9 /* Coordinator.swift in Sources */,
 				0B5D037D249CF8E100C4ACE9 /* PokemonPropertiesTableViewCell.swift in Sources */,
 			);

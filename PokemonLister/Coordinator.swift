@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Coordinator {
-    let networkController: NetworkController
+    let persistenceController: PersistenceController
     
     var mainStoryboard: UIStoryboard {
         return UIStoryboard(name: "Main", bundle: nil)
@@ -18,11 +18,12 @@ class Coordinator {
     
     init() {
         let urlSession = URLSession(configuration: .default)
-        self.networkController = NetworkController(session: urlSession)
+        let networkController = NetworkController(session: urlSession)
+        persistenceController = PersistenceController(networkController: networkController)
     }
 
     func configure(_ pokemonListViewController: PokemonListViewController) {
-        let fetchPokemonListUseCase = FetchPokemonListUseCase(networkController: networkController, delegate: pokemonListViewController)
+        let fetchPokemonListUseCase = FetchPokemonListUseCase(persistenceController: persistenceController, delegate: pokemonListViewController)
         pokemonListViewController.fetchPokemonListUseCase = fetchPokemonListUseCase
         pokemonListViewController.coordinator = self
     }

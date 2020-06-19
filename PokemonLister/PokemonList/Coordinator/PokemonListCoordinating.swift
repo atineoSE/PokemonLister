@@ -15,7 +15,7 @@ protocol PokemonListCoordinating: AnyObject {
 extension Coordinator: PokemonListCoordinating {
     func pokemonListViewController(_ pokemonListViewController: PokemonListViewController, didSelectPokemonWithName name: String) {
         guard let pokemonDetailViewController = mainStoryboard.instantiateViewController(withIdentifier: PokemonDetailViewController.identifier) as? PokemonDetailViewController else { return }
-        let fetchPokemonDetailsUseCase = FetchPokemonDetailsUseCase(networkController: networkController, delegate: pokemonDetailViewController)
+        let fetchPokemonDetailsUseCase = FetchPokemonDetailsUseCase(persistenceController: persistenceController, delegate: pokemonDetailViewController)
         pokemonDetailViewController.fetchPokemonDetailsUseCase = fetchPokemonDetailsUseCase
         pokemonDetailViewController.pokemonName = name
         pokemonListViewController.show(pokemonDetailViewController, sender: nil)
