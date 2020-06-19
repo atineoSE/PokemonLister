@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 struct PokemonList: Decodable {
     struct PokemonItem: Decodable {
@@ -16,4 +16,19 @@ struct PokemonList: Decodable {
     }
     
     let results: [PokemonItem]
+}
+
+extension PokemonList.PokemonItem {
+    var pokemonId: String? {
+        let urlAsString = url.absoluteString
+        guard let id = urlAsString.split(separator: "/").last else {
+            return nil
+        }
+        return String(id)
+    }
+    
+    var summaryViewModel: PokemonSummaryViewModel {
+        let image = UIImage.mainImage(pokemonId: pokemonId)
+        return PokemonSummaryViewModel(image: image, name: name)
+    }
 }

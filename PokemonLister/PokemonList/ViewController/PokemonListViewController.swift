@@ -20,7 +20,6 @@ class PokemonListViewController: UIViewController, Refreshable {
 
         setupRefreshControl()
         refresh()
-        
     }
     
     private func registerCellType() {

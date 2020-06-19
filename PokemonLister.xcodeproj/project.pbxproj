@@ -29,6 +29,7 @@
 		0B5D035A249CBAF800C4ACE9 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 0B5D0359249CBAF700C4ACE9 /* Images */; };
 		0B5D035C249CBC7800C4ACE9 /* Refreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D035B249CBC7800C4ACE9 /* Refreshable.swift */; };
 		0B5D035F249CBD3D00C4ACE9 /* FetchPokemonListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D035E249CBD3D00C4ACE9 /* FetchPokemonListUseCase.swift */; };
+		0B5D0361249CC10700C4ACE9 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D0360249CC10700C4ACE9 /* UIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		0B5D0359249CBAF700C4ACE9 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		0B5D035B249CBC7800C4ACE9 /* Refreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refreshable.swift; sourceTree = "<group>"; };
 		0B5D035E249CBD3D00C4ACE9 /* FetchPokemonListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPokemonListUseCase.swift; sourceTree = "<group>"; };
+		0B5D0360249CC10700C4ACE9 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				0B5D0357249CB99400C4ACE9 /* UITableView.swift */,
+				0B5D0360249CC10700C4ACE9 /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				0B5D0336249CAC9600C4ACE9 /* Pokemon.swift in Sources */,
 				0B5D0358249CB99400C4ACE9 /* UITableView.swift in Sources */,
 				0B5D033D249CAE5700C4ACE9 /* NetworkError.swift in Sources */,
+				0B5D0361249CC10700C4ACE9 /* UIImage.swift in Sources */,
 				0B5D0339249CAD3500C4ACE9 /* PokemonAPI.swift in Sources */,
 				0B5D0334249CAC8B00C4ACE9 /* PokemonList.swift in Sources */,
 				0B5D0311249C9E5000C4ACE9 /* AppDelegate.swift in Sources */,

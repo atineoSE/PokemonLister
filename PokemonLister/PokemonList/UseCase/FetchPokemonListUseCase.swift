@@ -22,6 +22,13 @@ class FetchPokemonListUseCase {
     }
     
     func fetchPokemonList() {
-        // TODO
+        networkController.get(url: PokemonAPI.pokemonURL) { [weak self] (result: Result<PokemonList,Error>) in
+            if let pokemonItemList = try? result.get().results {
+                DispatchQueue.main.async {
+                    let pokemonList = pokemonItemList.map { $0.summaryViewModel }
+                    self?.delegate.didRetrieve(pokemonList: pokemonList)
+                }
+            }
+        }
     }
 }
