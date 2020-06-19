@@ -8,13 +8,18 @@
 
 import UIKit
 
-class PokemonListViewController: UIViewController {
+class PokemonListViewController: UIViewController, Refreshable {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var fetchPokemonListUseCase: FetchPokemonListUseCase?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupRefreshControl()
+        refresh()
+        
     }
     
     private func registerCellType() {
@@ -23,4 +28,10 @@ class PokemonListViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: identifier)
     }
 
+    @objc
+    func refresh() {
+        beginRefreshing()
+        fetchPokemonListUseCase?.fetchPokemonList()
+    }
+    
 }
