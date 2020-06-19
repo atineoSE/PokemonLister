@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-struct Item: Decodable {
+struct Item: Codable {
     let name: String
     let url: URL
 }
 
-struct PokemonList: Decodable {
+struct PokemonList: Codable {
     let results: [Item]
     let next: URL?
 }
@@ -36,14 +36,14 @@ extension Item {
     }
 }
 
-struct Pokemon: Decodable {
-    struct PokemonType: Decodable {
+struct Pokemon: Codable {
+    struct PokemonType: Codable {
         let type: Item
     }
-    struct PokemonAbility: Decodable {
+    struct PokemonAbility: Codable {
         let ability: Item
     }
-    struct PokemonMove: Decodable {
+    struct PokemonMove: Codable {
         let move: Item
     }
     let id: Int
