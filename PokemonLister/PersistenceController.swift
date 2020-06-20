@@ -36,8 +36,9 @@ class PersistenceController {
     }
     
     func fetch<T>(url: URL, completion: @escaping (T?)->()) where T: Codable {
-        if let localUrl = filesIndexDictionary[url] {
-            completion(fetch(localURL: localUrl))
+        if let localUrl = filesIndexDictionary[url],
+            let value: T = fetch(localURL: localUrl) {
+            completion(value)
         } else {
             networkController.get(url: url) { [weak self] (result: Result<T,Error>) in
                 if let value = try? result.get() {
