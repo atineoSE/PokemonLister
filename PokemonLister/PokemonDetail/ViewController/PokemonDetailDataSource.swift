@@ -13,7 +13,7 @@ import UIKit
 enum PokemonDetailRowType: RowType {
     case name(String)
     case images([UIImage])
-    case properties((String, [String]))
+    case properties((PropertiesViewModel, Bool))
     
     var cellType: UITableViewCell.Type {
         switch self {
@@ -36,6 +36,10 @@ class PokemonDetailDataSource: NSObject {
     init(pokemon: PokemonViewModel) {
         organizer = DataOrganizer(pokemon: pokemon)
     }
+    
+    func toggleCollapseState(at indexPath: IndexPath) {
+        organizer.toggleCollapseState(at: indexPath.row)
+    }
 }
 
 // MARK: RowTypeSourcing
@@ -43,7 +47,7 @@ extension PokemonDetailDataSource: RowTypeSourcing {
     static var rowTypes: [RowType] {
         return [PokemonDetailRowType.name(""),
                 PokemonDetailRowType.images([]),
-                PokemonDetailRowType.properties(("",[]))]
+                PokemonDetailRowType.properties((PropertiesViewModel.dummyViewModel, false))]
     }
 }
 
@@ -75,13 +79,12 @@ extension PokemonDetailDataSource {
         
         init(pokemon: PokemonViewModel) {
             self.pokemon = pokemon
-
             rows = [.name(pokemon.name),
                     .images(pokemon.images),
-                    .properties(("Characteristics", pokemon.characteristics)),
-                    .properties(("Types", pokemon.types)),
-                    .properties(("Abilities", pokemon.abilities)),
-                    .properties(("Moves", pokemon.moves))
+                    .properties((pokemon.characteristics, true)),
+                    .properties((pokemon.types, true)),
+                    .properties((pokemon.abilities, true)),
+                    .properties((pokemon.moves, true))
             ]
         }
         
@@ -89,5 +92,15 @@ extension PokemonDetailDataSource {
             return rows[index]
         }
         
+        mutating func toggleCollapseState(at index: Int) {
+            let selectedRow = row(at: index)
+            switch selectedRow {
+            case .properties(let (propertiesViewModel, isCollapsed)):
+                let newRow = PokemonDetailRowType.properties((propertiesViewModel, !isCollapsed))
+                rows[index] = newRow
+            default:
+                fatalError("Unexpected cell type")
+            }
+        }
     }
 }

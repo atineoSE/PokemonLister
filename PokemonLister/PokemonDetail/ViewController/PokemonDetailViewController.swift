@@ -60,17 +60,31 @@ class PokemonDetailViewController: UIViewController, Refreshable {
 // MARK: UITableViewDelegate
 extension PokemonDetailViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let propertiesCell = cell as? PokemonPropertiesTableViewCell {
+            propertiesCell.delegate = self
+        }
+    }
+    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
-    
 }
-
 
 // MARK: FetchPokemonListUseCaseDelegate
 extension PokemonDetailViewController: FetchPokemonDetailsUseCaseDelegate {
     func didRetrieve(pokemon: PokemonViewModel) {
         endRefreshing()
         updateUI(with: pokemon)
+    }
+}
+
+// MARK: PokemonPropertiesTableViewCellDelegate
+extension PokemonDetailViewController: PokemonPropertiesTableViewCellDelegate {
+    func pokemonPropertiesCellDidToggleCollapseState(_ cell: PokemonPropertiesTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        dataSource?.toggleCollapseState(at: indexPath)
+        tableView.reloadData()
     }
 }
