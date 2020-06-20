@@ -38,6 +38,11 @@ extension UIImage {
             return filename.starts(with: "\(pokemonId).") || filename.starts(with: "\(pokemonId)-")
         }
 
-        return pokemonUrls.compactMap({ try? Data(contentsOf: $0)}).compactMap({ UIImage(data: $0) })
+        let imagesFound =  pokemonUrls.compactMap({ try? Data(contentsOf: $0)}).compactMap({ UIImage(data: $0) })
+        if imagesFound.count == 0 {
+            return [UIImage.unknownPokemonImage]
+        } else {
+            return imagesFound
+        }
     }
 }
