@@ -8,18 +8,18 @@
 
 import UIKit
 
+// MARK: Cell
 class PokemonTableViewCell: UITableViewCell {
-
     @IBOutlet weak var pokemonImageView: UIImageView!
     @IBOutlet weak var pokemonNameLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    func configure(with pokemonSummaryViewModel: PokemonSummaryViewModel) {
-        pokemonImageView.image = pokemonSummaryViewModel.image
-        pokemonNameLabel.text = pokemonSummaryViewModel.name
+}
+
+// MARK: PokemonListRowConfigurable
+extension PokemonTableViewCell: PokemonListRowConfigurable {
+    func configure(with row: PokemonListRowType) {
+        if case .summary(let summaryViewModel) = row {
+            pokemonImageView.image = summaryViewModel.image
+            pokemonNameLabel.text = summaryViewModel.name
+        }
     }
 }

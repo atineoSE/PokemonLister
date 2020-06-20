@@ -18,7 +18,7 @@ class PokemonListViewController: UIViewController, Refreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        registerCellType()
+        registerCellTypes()
         
         tableView.dataSource = dataSource
         tableView.delegate = self
@@ -28,10 +28,13 @@ class PokemonListViewController: UIViewController, Refreshable {
         refresh()
     }
     
-    private func registerCellType() {
-        let identifier = String(describing: PokemonTableViewCell.self)
-        let nib = UINib.init(nibName: identifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: identifier)
+    private func registerCellTypes() {
+        PokemonListDataSource.rowTypes.forEach { row in
+            let identifier = row.identifier
+            let nib = UINib.init(nibName: identifier, bundle: nil)
+            tableView.register(nib, forCellReuseIdentifier: identifier)
+        }
+        tableView.separatorStyle = .none
     }
 
     @objc
@@ -51,7 +54,10 @@ class PokemonListViewController: UIViewController, Refreshable {
 // MARK: UITableViewDelegate
 extension PokemonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedPokemonName = dataSource.pokemonViewModel(at: indexPath).name
+        guard let selectedPokemonName = dataSource.pokemonViewModel(at: indexPath)?.name else {
+            tableView.deselectRow(at: indexPath, animated: true)
+            return
+        }
         coordinator?.pokemonListViewController(self, didSelectPokemonWithName: selectedPokemonName)
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -9,6 +9,24 @@
 import Foundation
 import UIKit
 
+// MARK: Types
+enum PokemonListRowType: RowType {
+    case summary(PokemonSummaryViewModel)
+    case loading
+    
+    var cellType: UITableViewCell.Type {
+        switch self {
+        case .summary(_): return PokemonTableViewCell.self
+        case .loading: return LoadingTableViewCell.self
+        }
+    }
+}
+
+// MARK: Protocols
+protocol PokemonListRowConfigurable {
+    func configure(with row: PokemonListRowType)
+}
+
 // MARK: DataSource
 class PokemonListDataSource: NSObject {
     private var organizer: DataOrganizer
@@ -18,13 +36,20 @@ class PokemonListDataSource: NSObject {
     }
     
     func add(_ pokemonList: [PokemonSummaryViewModel]) {
-        organizer.append(page: pokemonList)
+        organizer.append(pokemonList: pokemonList)
     }
     
-    func pokemonViewModel(at indexPath: IndexPath) -> PokemonSummaryViewModel {
-        return organizer[indexPath.row]
+    func pokemonViewModel(at indexPath: IndexPath) -> PokemonSummaryViewModel? {
+        return organizer.pokemonViewModel(at: indexPath.row)
     }
+}
 
+// MARK: RowTypeSourcing
+extension PokemonListDataSource: RowTypeSourcing {
+    static var rowTypes: [RowType] {
+        return [PokemonListRowType.summary(PokemonSummaryViewModel.dummyViewModel),
+                PokemonListRowType.loading]
+    }
 }
 
 // MARK: UITableViewDataSource
@@ -34,27 +59,48 @@ extension PokemonListDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let pokemonSummaryViewModel = organizer[indexPath.row]
-        let cell = tableView.dequeueReusableCell(with: PokemonTableViewCell.self, for: indexPath)
-        cell.configure(with: pokemonSummaryViewModel)
+        let row = organizer.row(at: indexPath.row)
+        let cell = tableView.dequeueReusableCell(with: row.cellType, for: indexPath)
+        if let configurableCell = cell as? PokemonListRowConfigurable {
+            configurableCell.configure(with: row)
+        }
         return cell
     }
 }
 
 // MARK: DataOrganizer
-extension PokemonListDataSource {
+private extension PokemonListDataSource {
     struct DataOrganizer {
-        var pokemonList: [PokemonSummaryViewModel] = []
-        
+        var rows: [PokemonListRowType] = []
+
         var rowsCount: Int {
-            return pokemonList.count
-        }
-        subscript(index: Int) -> PokemonSummaryViewModel {
-            return pokemonList[index]
+            return rows.count
         }
         
-        mutating func append(page: [PokemonSummaryViewModel]) {
-            pokemonList.append(contentsOf: page)
+        func pokemonViewModel(at index: Int) -> PokemonSummaryViewModel? {
+            let row = rows[index]
+            if case .summary(let summaryViewModel) = row {
+                return summaryViewModel
+            } else {
+                return nil
+            }
         }
+        
+        func row(at index: Int) -> PokemonListRowType {
+            return rows[index]
+        }
+        
+        mutating func append(pokemonList: [PokemonSummaryViewModel]) {
+            removeLoadingCell()
+            rows += pokemonList.map { PokemonListRowType.summary($0) } + [.loading]
+        }
+        
+        mutating func removeLoadingCell() {
+            guard let last = rows.last else { return }
+            if case .loading = last {
+                rows = rows.dropLast()
+            }
+        }
+        
     }
 }

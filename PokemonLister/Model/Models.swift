@@ -36,6 +36,17 @@ extension Item {
     }
 }
 
+struct PokemonSummaryViewModel {
+    let image: UIImage
+    let name: String
+}
+
+extension PokemonSummaryViewModel {
+    static var dummyViewModel: PokemonSummaryViewModel {
+        return PokemonSummaryViewModel(image: UIImage.unknownPokemonImage, name: "")
+    }
+}
+
 struct Pokemon: Codable {
     struct PokemonType: Codable {
         let type: Item
