@@ -1,6 +1,6 @@
 # PokemonLister: sample app
 
-This is a sample iOS app that lists pokemon and their characteristics.
+This is a sample iOS app that lists pokemons and their characteristics.
 
 ![](./demo/demo.gif)
 
