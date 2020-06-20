@@ -53,7 +53,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="firstImageView" destination="Cy1-4z-z4I" id="kmG-Nb-eof"/>
                 <outlet property="imagesStackView" destination="DeT-Z0-05J" id="5qp-l3-yCl"/>
             </connections>
             <point key="canvasLocation" x="134.78260869565219" y="151.00446428571428"/>

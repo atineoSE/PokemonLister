@@ -9,22 +9,19 @@
 import UIKit
 
 class PokemonImagesTableViewCell: UITableViewCell {
-
     @IBOutlet weak var imagesStackView: UIStackView!
-    @IBOutlet weak var firstImageView: UIImageView!
-    
 }
 
 extension PokemonImagesTableViewCell : PokemonDetailRowConfigurable {
     func configure(with row: PokemonDetailRowType) {
         if case .images(let images) = row {
-            guard let firstImage = images.first else {
-                firstImageView.image = UIImage.unknownPokemonImage
-                return
+            // clear previous state
+            for view in imagesStackView.arrangedSubviews {
+                view.removeFromSuperview()
             }
-            firstImageView.image = firstImage
             
-            images.dropFirst().forEach { image in
+            // load images
+            for image in images {
                 let newImageView = UIImageView(image: image)
                 imagesStackView.addArrangedSubview(newImageView)
             }
