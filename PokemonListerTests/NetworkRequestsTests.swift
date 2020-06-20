@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 @testable import PokemonLister
 
-
 class NetworkRequestTests: XCTestCase {
     
     // MARK: Tests

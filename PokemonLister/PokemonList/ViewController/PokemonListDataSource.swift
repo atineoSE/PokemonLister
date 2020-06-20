@@ -69,7 +69,7 @@ extension PokemonListDataSource: UITableViewDataSource {
 }
 
 // MARK: DataOrganizer
-private extension PokemonListDataSource {
+extension PokemonListDataSource {
     struct DataOrganizer {
         var rows: [PokemonListRowType] = []
 
@@ -101,6 +101,5 @@ private extension PokemonListDataSource {
                 rows = rows.dropLast()
             }
         }
-        
     }
 }

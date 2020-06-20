@@ -45,6 +45,7 @@
 		0B6A88D5249D2A2000AF745B /* UIImageExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A88D4249D2A2000AF745B /* UIImageExtensionTests.swift */; };
 		0B6A88D8249E77BA00AF745B /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A88D6249E77BA00AF745B /* LoadingTableViewCell.swift */; };
 		0B6A88D9249E77BA00AF745B /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B6A88D7249E77BA00AF745B /* LoadingTableViewCell.xib */; };
+		0B6A88DB249E854300AF745B /* PokemonListDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A88DA249E854300AF745B /* PokemonListDataSourceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		0B6A88D4249D2A2000AF745B /* UIImageExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensionTests.swift; sourceTree = "<group>"; };
 		0B6A88D6249E77BA00AF745B /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		0B6A88D7249E77BA00AF745B /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
+		0B6A88DA249E854300AF745B /* PokemonListDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListDataSourceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				0B6A88D2249D287400AF745B /* ModelTests.swift */,
 				0B6A88D4249D2A2000AF745B /* UIImageExtensionTests.swift */,
 				0B6A88D0249D27C500AF745B /* NetworkRequestsTests.swift */,
+				0B6A88DA249E854300AF745B /* PokemonListDataSourceTests.swift */,
 			);
 			path = PokemonListerTests;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B6A88DB249E854300AF745B /* PokemonListDataSourceTests.swift in Sources */,
 				0B6A88D1249D27C500AF745B /* NetworkRequestsTests.swift in Sources */,
 				0B6A88D5249D2A2000AF745B /* UIImageExtensionTests.swift in Sources */,
 				0B6A88D3249D287400AF745B /* ModelTests.swift in Sources */,
