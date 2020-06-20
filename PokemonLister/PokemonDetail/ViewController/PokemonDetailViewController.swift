@@ -26,6 +26,7 @@ class PokemonDetailViewController: UIViewController, Refreshable {
         tableView.dataSource = dataSource
         tableView.delegate = self
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         
         navigationItem.title = pokemonName
         
@@ -64,10 +65,6 @@ extension PokemonDetailViewController: UITableViewDelegate {
         if let propertiesCell = cell as? PokemonPropertiesTableViewCell {
             propertiesCell.delegate = self
         }
-    }
-    
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
     }
 }
 
